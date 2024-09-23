@@ -36,5 +36,51 @@
     bin/zookeeper-server-start.sh config/zookeeper.properties
 
 4. Inicializar o Kafka
-```bash
+   ```bash
    bin/kafka-server-start.sh config/server.properties
+5. Criar tópico no Kafka
+   ```bash
+   bin/kafka-topics.sh --create --topic macklake-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 17
+6. Criado um produtor em Python
+   ```python
+   from kafka import KafkaProducer
+    import time
+
+    producer = KafkaProducer(bootstrap_servers='localhost:9092')
+
+    #  caminho do arquivo onde as mensagens produzidas serão salvas
+    arquivo_mensagens = '/tmp/mensagens_produzidas.txt' 
+
+
+    # Função para enviar mensagens
+   def enviar_mensagens():
+    with open(arquivo_mensagens, 'a') as f:  
+        for i in range(10):
+            mensagem = f"Mensagem {i} - Teste de mensagem Kafka"   # Mensagem a ser enviada
+            f.write(f"{mensagem}\n")  # Salvar a mensagem no arquivo
+            producer.send('macklake-topic', mensagem.encode('utf-8'))  # Enviar a mensagem para o Kafka
+            print(f"Mensagem enviada e salva: {mensagem}")
+            time.sleep(1)  # Atraso para visualizar o envio gradual das mensagens
+
+   # Enviar as mensagens
+    if __name__ == "__main__":
+      enviar_mensagens()
+
+    # Fecha o produtor
+      producer.flush()
+      producer.close
+7. Criado um consumidor em Python
+   ```python
+   # Função para ler mensagens do arquivo
+    def ler_mensagens_arquivo():
+        arquivo_mensagens = '/tmp/mensagens_produzidas.txt'  # O mesmo caminho usado pelo produtor
+        try:
+            with open(arquivo_mensagens, 'r') as f:  # Abrir o arquivo para leitura
+                for linha in f:
+                    print(f"Mensagem lida do arquivo: {linha.strip()}")
+    except FileNotFoundError:
+        print(f"Arquivo {arquivo_mensagens} não encontrado. Certifique-se de que o produtor o criou corretamente.")
+
+   # Iniciar o consumo das mensagens do arquivo
+    if __name__ == "__main__":
+    ler_mensagens_arquivo()gi
