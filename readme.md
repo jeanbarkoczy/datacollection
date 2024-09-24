@@ -15,6 +15,10 @@
 
 ![kafka](https://github.com/user-attachments/assets/fa5c8826-af05-471e-9312-86ad77d44005)
 
+## 2. O que é o Kafka 
+
+- **1* O Apache Kafka é uma plataforma de streaming distribuída que permite a criação de pipelines de dados em tempo real e aplicações de streaming.
+
 ## 2. Manual do Sistema
 
 ### Passo a Passo para o Desenvolvimento:
