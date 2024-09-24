@@ -15,9 +15,13 @@
 
 ![kafka](https://github.com/user-attachments/assets/fa5c8826-af05-471e-9312-86ad77d44005)
 
-## 2. O que é o Kafka 
+## 2. O que é o Kafka e suas vantagens
 
 - *** O Apache Kafka é uma plataforma de streaming distribuída que permite a criação de pipelines de dados em tempo real e aplicações de streaming.
+- Altamente escalável, tanto em termos de volume de dados quanto de throughput.
+- Resiliência e Tolerância a Falhas: Com o uso de replicação de partições entre brokers, o Kafka oferece alta disponibilidade e resiliência a falhas de hardware.
+- Baixa Latência: Ele é otimizado para processamento em tempo real, permitindo a transmissão de grandes volumes de dados com latência muito baixa.
+- Alto Desempenho: Kafka foi projetado para lidar com grandes volumes de dados e throughput alto, com uma sobrecarga de recursos relativamente baixa.
 
 ## 2. Manual do Sistema
 
